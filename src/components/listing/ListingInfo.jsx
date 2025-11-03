@@ -28,146 +28,91 @@ function ListingInfo({
 
   return (
     <>
-  <div className="col-span-4 flex flex-col gap-8">
-      <div className="flex flex-col gap-2">
-        <div 
-          className="
-            text-xl 
-            font-semibold 
-            flex 
-            flex-row 
-            items-center
-            gap-2
-          "
-        >
-          
-   <div className="flex items-center gap-2">
-    <div className="w-8 h-8 rounded-full overflow-hidden">
-      <img
-        src={"https://res.cloudinary.com/doammcpie/image/upload/v1735803301/135111164_2800118623571205_3672319407065042766_n_jeourq.jpg"}
-        alt="Agent"
-        className="object-cover w-full h-full"
-      />
+ <div className="col-span-4 space-y-8">
+  {/* Agent Profile with Stats */}
+  <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+    <div className="flex items-center gap-4 mb-4">
+      <div className="relative">
+        <img
+          src={"https://res.cloudinary.com/doammcpie/image/upload/v1735803301/135111164_2800118623571205_3672319407065042766_n_jeourq.jpg"}
+          alt="Agent"
+          className="w-14 h-14 rounded-full object-cover border-2 border-white"
+        />
+      </div>
+      <div>
+        <h3 className="font-bold text-lg">Victor M.</h3>
+        <p className="text-blue-100">Property Specialist</p>
+      </div>
     </div>
-    <div>
-      <h6 className="font-semibold text-sm">
-        <a href="/team-details">
-          { "Victor M."}
-        </a>
-      </h6>
-      <small className="text-xs">Property Seller</small>
+    <div className="flex gap-6 text-center">
+      <div>
+        <p className="font-bold text-xl">50+</p>
+        <p className="text-blue-100 text-sm">Properties</p>
+      </div>
+      <div>
+        <p className="font-bold text-xl">4.9★</p>
+        <p className="text-blue-100 text-sm">Rating</p>
+      </div>
+      <div>
+        <p className="font-bold text-xl">98%</p>
+        <p className="text-blue-100 text-sm">Response Rate</p>
+      </div>
     </div>
   </div>
 
+  {/* Property Highlights */}
+  <div className="grid grid-cols-3 gap-4">
+    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+        <IoIosBed className="w-6 h-6 text-blue-600" />
+      </div>
+      <p className="font-bold text-gray-900 text-lg">{roomCount}</p>
+      <p className="text-gray-600 text-sm">Bedrooms</p>
+    </div>
+    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+        <TbBathFilled className="w-6 h-6 text-green-600" />
+      </div>
+      <p className="font-bold text-gray-900 text-lg">{bathroomCount}</p>
+      <p className="text-gray-600 text-sm">Bathrooms</p>
+    </div>
+    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+      <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+        <LiaVectorSquareSolid className="w-6 h-6 text-purple-600" />
+      </div>
+      <p className="font-bold text-gray-900 text-lg">3,450</p>
+      <p className="text-gray-600 text-sm">Square Feet</p>
+    </div>
+  </div>
+
+  {/* Description */}
+  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+    <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
+      <span>🏠</span> About This Home
+    </h3>
+    <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
+  </div>
+
+  {/* Amenities */}
+  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+    <h3 className="text-xl font-bold mb-6 text-gray-900">✨ Amenities & Features</h3>
+    <div className="grid grid-cols-2 gap-4">
+      {amenity && amenity.map((item, index) => (
+        <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors group">
+          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            {item?.icon && React.cloneElement(item.icon, { className: "w-5 h-5 text-blue-600" })}
+          </div>
+          <div>
+            <p className="font-semibold text-gray-900">{item?.label}</p>
+            <p className="text-sm text-gray-600">{item?.description}</p>
+          </div>
         </div>
- 
-
-
-
-
-        <ul className="flex gap-6 mt-4 text-sm text-gray-600">
-
-
-
-
-
-  <li className="flex  items-center gap-2">
- 
-   <span className="flex items-center gap-2 text-lg">
-  
-  <IoIosBed size={24} />
-</span>
-     <span> {roomCount} Bedrooms</span>
-  </li>
-
-
-
- <div className="h-10 border-l border-gray-300"></div>
-
-  <li className="flex  items-center gap-2">
- 
-   <span className="flex items-center gap-2 text-lg">
-  
-  <TbBathFilled size={24} />
-</span>
-     <span>{bathroomCount } Bathrooms</span>
-  </li>
-
- <div className="h-10 border-l border-gray-300"></div>
-
-
-
-  <li className="flex  items-center gap-2 text-lg">
- 
-   <span className="flex items-center gap-2">
-  
-  <LiaVectorSquareSolid size={24} />
-</span>
-     <span>{ 3450} square ft</span>
-  </li>
-</ul>
-
-
-      </div>
-  
-
-    <div 
-          className="
-        
-            grid 
-            grid-cols-1 
-            sm:grid-cols-2 
-            md:grid-cols-3 
-            lg:grid-cols-4
-            xl:grid-cols-4
-            2xl:grid-cols-4
-            gap-8
-          "
-        >
-         {amenities.map((item) => (
-              <div key={item.label} className="col-span-2">
-                <ListingCategory
-                  icon={item.icon} 
-                  label={item?.label}
-                  description={item?.description} 
-                />
-                </div>
-            
-            ))}
-  
-  </div>
-      <hr />
-      <div className="
-      text-lg font-light text-neutral-500">
-        {description}
-      </div>
-      <hr />
-           <div
-      className="
-        pt-6
-          grid 
-          grid-cols-1 
-          md:grid-cols-2 
-          gap-3
-          max-h-[50vh]
-          overflow-y-auto
-        "
-      >
-{amenity &&
-  amenity.map((item, index) => (
-    <div key={index} className="col-span-1">
-      <ListingCategory
-        icon={item?.icon}
-        label={item?.label}
-        description={item?.description}
-      />
+      ))}
     </div>
-  ))}
+  </div>
+
 
 </div>
-    
-      <Map center={coordinates} />
-    </div>
     </>
   )
 }
