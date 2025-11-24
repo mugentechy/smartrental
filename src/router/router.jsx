@@ -2,6 +2,7 @@ import {  useEffect } from "react";
 import Navbar from  '../components/navbar/Navbar'
 import Categories from  '../components/navbar/Categories'
 import LoginModal from  '../components/modals/LoginModal'
+import AddModal from  '../components/modals/AddModal'
 import RegisterModal from '../components/modals/RegisterModal';
 import RentModal from '../components/modals/RentModal';
 import ToasterProvider from '../providers/ToasterProvider';
@@ -34,7 +35,9 @@ function Router() {
        <BrowserRouter>
            <ToasterProvider />
     <LoginModal />
+
       <RegisterModal />
+            <AddModal />
         <RentModal />
            <ImageModal />
          <SearchModal />
